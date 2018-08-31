@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header.js';
-import Card from '../Card/Card.js';
+import Gallary from '../Gallary/Gallary.js';
 
 class App extends Component {
   render() {
@@ -9,8 +9,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <br />
-        <p>Gallery</p>
-        <Card />
+        <Gallary />
       </div>
     );
   }
