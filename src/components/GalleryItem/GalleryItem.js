@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 
-class Deletebtn extends Component {
+
+class GalleryItem extends Component {
     render() {
         return (
-            <div>
+            <card>
+                <img src="images/goat_small.jpg" />
+                <p>This is a small Goat</p>
                 <button>Like</button>
                 <p>unloved</p>
                 <p>_ people have loved this photo</p>
-            </div>
+            </card>
         );
     }
 }
 
-export default Deletebtn;
+export default GalleryItem;
