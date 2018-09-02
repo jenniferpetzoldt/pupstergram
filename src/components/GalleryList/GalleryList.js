@@ -11,13 +11,13 @@ class GalleryList extends Component {
         return (
             <div>
                 <p>Gallery</p>
-                <card>
-                    {this.props.galleryList.map((galleryitem, id)=>{
+                <div>
+                    {this.props.galleryList.map((galleryItem, id)=>{
                         return (
-                            <GalleryItem key={id} galleryitem={galleryitem}/>
+                            <GalleryItem key={id} galleryItem={galleryItem}/>
                         );
                     })}
-                </card>
+                </div>
             </div>
         );
     }

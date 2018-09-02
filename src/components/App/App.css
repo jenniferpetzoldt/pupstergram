@@ -1,9 +1,13 @@
+*{
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #5F6F75;
   height: 70px;
   padding: 20px;
   color: white;
@@ -20,4 +24,15 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #EEC9C8;
+  color: #5F6F75;
+}
+
+card {
+  float: left;
 }
