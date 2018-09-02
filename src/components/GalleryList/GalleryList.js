@@ -4,11 +4,6 @@ import GalleryItem from '../GalleryItem/GalleryItem.js';
 class GalleryList extends Component {
     constructor(props){
         super(props);
-        this.state={
-            image: {
-                image: 'images/goat_small.jpg',
-                imagetext: 'This is a small goat',
-            }
         };
     }
 
@@ -16,7 +11,7 @@ class GalleryList extends Component {
         return (
             <div>
                 <p>Gallery</p>
-                <GalleryItem />
+                <GalleryItem galleryItem={this.props.state.galleryList}/>
             </div>
         )
     }
