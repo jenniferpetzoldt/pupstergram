@@ -18,7 +18,7 @@ class GalleryItem extends Component {
             <div>
                 <img src={this.props.galleryitem.path} />
                 <p>{this.props.galleryitem.description}</p>
-                <button>Like</button>
+                <button onClick>Like</button>
                 {message}
             </div>
         );

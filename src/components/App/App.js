@@ -31,12 +31,26 @@ class App extends Component {
     })
   }
 
+  updateLikes(){
+    axios({
+      method: 'PUT',
+      url: '/likre/' + this.props.galleryItem.id,
+      data: this.props.galleryItem.likes
+    }).then((response)=>{
+      console.log('Update success');
+      this.getGalleryItems();
+    }).catch((error)=>{
+      console.log(error);
+      alert('Unable to Update galleryItem')
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <br />
-        <GalleryList galleryList={this.state.galleryList} />
+        <GalleryList updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
       </div>
     );
   }
