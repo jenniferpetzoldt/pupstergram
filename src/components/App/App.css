@@ -35,4 +35,15 @@ html, body {
 
 card {
   float: left;
+  margin : 3%;
+  height: 240px;
+}
+
+img, .image_description {
+  width: 200px;
+  height: 200px;
+}
+
+.image_description { 
+margin: 0;
 }

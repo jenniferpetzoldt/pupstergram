@@ -34,7 +34,7 @@ class App extends Component {
   updateLikes(){
     axios({
       method: 'PUT',
-      url: '/likre/' + this.props.galleryItem.id,
+      url: '/gallery/like/' + this.props.galleryItem.id,
       data: this.props.galleryItem.likes
     }).then((response)=>{
       console.log('Update success');
