@@ -9,8 +9,6 @@ class GalleryList extends Component {
 
     render() {
         return (
-            <div>
-                <p>Gallery</p>
                 <div>
                     {this.props.galleryList.map((galleryItem, id) => {
                         return (
@@ -18,7 +16,6 @@ class GalleryList extends Component {
                         );
                     })}
                 </div>
-            </div>
         );
     }
 }

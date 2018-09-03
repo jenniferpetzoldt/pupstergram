@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header/Header.js';
 import GalleryList from '../GalleryList/GalleryList.js';
+import GalleryForm from '../GalleryForm/GalleryForm.js';
 import axios from 'axios';
 
 class App extends Component {
@@ -50,6 +51,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <br />
+        <h1>Gallery</h1>
+        <div>
+          <GalleryForm />
+        </div>
         <GalleryList updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
       </div>
     );
