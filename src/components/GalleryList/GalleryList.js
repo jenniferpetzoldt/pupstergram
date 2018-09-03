@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem.js';
 
 class GalleryList extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        
+
     }
 
     render() {
@@ -12,9 +12,9 @@ class GalleryList extends Component {
             <div>
                 <p>Gallery</p>
                 <div>
-                    {this.props.galleryList.map((galleryItem, id)=>{
+                    {this.props.galleryList.map((galleryItem, id) => {
                         return (
-                            <GalleryItem key={id} galleryItem={galleryItem}/>
+                            <GalleryItem updateLikes={this.props.updateLikes} key={id} galleryItem={galleryItem} />
                         );
                     })}
                 </div>

@@ -31,15 +31,15 @@ class App extends Component {
     })
   }
 
-  updateLikes(){
+  updateLikes = (galleryItem) => {
+    console.log('in updateLikes', galleryItem);
     axios({
       method: 'PUT',
-      url: '/gallery/like/' + this.props.galleryItem.id,
-      data: this.props.galleryItem.likes
-    }).then((response)=>{
-      console.log('Update success');
+      url: '/gallery/like/' + galleryItem,
+    }).then((response) => {
+      console.log('Update success', response);
       this.getGalleryItems();
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log(error);
       alert('Unable to Update galleryItem')
     });

@@ -3,12 +3,17 @@ import React, { Component } from 'react';
 class GalleryItem extends Component {
     constructor(props) {
         super(props);
-        this.state = {isHidden: false};
-        
+        this.state = { isHidden: false };
+
     }
 
-   toggleHidden = () => {
-       console.log('in toggleHidden');
+    handleClick = () => {
+        console.log('in handleClick');
+        this.props.updateLikes(this.props.galleryItem.id);
+    }
+
+    toggleHidden = () => {
+        console.log('in toggleHidden');
         this.setState({
             isHidden: !this.isHidden,
         })
@@ -16,7 +21,7 @@ class GalleryItem extends Component {
     }
 
     render() {
-        const {isHidden} = this.state;
+        const { isHidden } = this.state;
         let message;
         if (this.props.galleryItem.likes > 0) {
             message = <p>{this.props.galleryItem.likes} people have loved this photo</p>
@@ -24,13 +29,13 @@ class GalleryItem extends Component {
             message = <p>unloved</p>
         }
 
-    
+
         return (
             <card>
-                <div onClick={() => this.setState({isHidden: !isHidden})}>
-                {isHidden ? <p class="image_description">{this.props.galleryItem.description}</p> : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description}/>}
+                <div onClick={() => this.setState({ isHidden: !isHidden })}>
+                    {isHidden ? <p class="image_description">{this.props.galleryItem.description}</p> : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
                 </div>
-                <button>Like</button>
+                <button onClick={this.handleClick}>Like</button>
                 {message}
             </card>
         );
