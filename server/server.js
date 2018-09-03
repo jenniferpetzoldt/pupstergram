@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const gallery = require('./routes/gallery.router.js');
+const mongoose = require('mongoose');
 const port = process.env.PORT || 5000;
 
 
@@ -14,7 +15,7 @@ app.use(express.static('build'));
 app.use('/gallery', gallery);
 
 /** ---------- MONGOOSE --------------- **/
-const mongoose = require('mongoose');
+
 const mongoURI = 'mongodb://localhost:27017/galleries';
 
 mongoose.connect(mongoURI, {useNewUrlParser: true});

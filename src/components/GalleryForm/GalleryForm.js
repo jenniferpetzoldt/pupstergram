@@ -7,40 +7,48 @@ class GalleryForm extends Component {
             galleryItem: {
                 path: '',
                 description: '',
-                likes: '',
+                likes: '0',
             }
         };
     }
 
     handlePathChange = (event) => {
         this.setState({
-            ...this.state.galleryItem,
-            path: event.target.value,
+            galleryItem: {
+                path: event.target.value,
+                description: this.state.galleryItem.description,
+                likes: this.state.galleryItem.likes,
+            }
         });
     }
 
     handleDescriptionChange = (event) => {
         this.setState({
-            ...this.state.galleryItem,
-            description: event.target.value,
+            galleryItem: {
+                path: this.state.galleryItem.path,
+                description: event.target.value,
+                likes: this.state.galleryItem.likes,
+            }
         })
+        console.log('new description', this.state.galleryItem.description);
     }
 
     handleFormSubmit = (event) => {
-        event.preventDevault();
-        console.log(this.state.galleryItem);
+        event.preventDefault();
         this.props.addGalleryItem(this.state.galleryItem);
+        console.log('in handleFormSubmit', this.state.galleryItem);
     }
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-            <label>Image</label>
-            <input value={this.state.galleryItem.path} onChange={this.handlePathChange} placeholder="images/close_up.jpg" />
-            <lable>Description</lable>
-            <input value={this.state.galleryItem.description} onChange={this.handleDescriptionChange} placeholder="e.g. cutest puppie ever" />
-          </form>
-        )
+           <form onSubmit={this.handleFormSubmit}>
+               <label>Image</label>
+               <input onChange={this.handlePathChange} />
+               <label>Description</label>
+               <input onChange={this.handleDescriptionChange} />
+               <input type="submit" value="Submit"/>
+           </form>
+        );
     }
 }// end class
 

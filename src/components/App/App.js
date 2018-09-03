@@ -46,6 +46,20 @@ class App extends Component {
     });
   }
 
+  addGalleryItem = (galleryItem) => {
+    axios({
+      method: 'POST',
+      url: 'gallery',
+      data: galleryItem
+    }).then((response)=>{
+      console.log('back from server with', response);
+      this.getGalleryItems();
+    }).catch((error)=>{
+      console.log(error);
+      alert('unable to add gallery item');
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -53,7 +67,7 @@ class App extends Component {
         <br />
         <h1>Gallery</h1>
         <div>
-          <GalleryForm />
+          <GalleryForm addGalleryItem={this.addGalleryItem}/>
         </div>
         <GalleryList updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
       </div>

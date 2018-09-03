@@ -33,7 +33,7 @@ class GalleryItem extends Component {
         return (
             <card>
                 <div onClick={() => this.setState({ isHidden: !isHidden })}>
-                    {isHidden ? <p class="image_description">{this.props.galleryItem.description}</p> : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
+                    {isHidden ? <p className="image_description">{this.props.galleryItem.description}</p> : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
                 </div>
                 <button onClick={this.handleClick}>Like</button>
                 {message}

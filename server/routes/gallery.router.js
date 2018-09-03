@@ -12,29 +12,21 @@ const GallerySchema = new Schema({
     likes: { type: Number }
 });
 
-const Gallery = mongoose.model('Galleries', GallerySchema);
+const Gallery = mongoose.model('galleries', GallerySchema);
 
-const galleryItems = [
-    { path: 'images/brooding.jpg', description: 'Some days you just need to nap in the sun', likes: 0 },
-    { path: 'images/close_up.jpg', description: `Don't I look fabulous!`, likes: 0 },
-    { path: 'images/fur_lined_coat.jpg', description: 'Ready for the club.', likes: 0 },
-    { path: 'images/good_morning.jpg', description: 'Just 5 more minutes.', likes: 0 },
-    { path: 'images/knocked_out.jpg', description: `When you can't stay awake to watch your favorite movie.`, likes: 0 },
-    { path: 'images/passed_out.jpg', description: 'Partied a little too hard last night.', likes: 0 },
-    { path: 'images/rain_coat.jpg', description: `Let's go splash in some puddles.`, likes: 0 },
-    { path: 'images/sleeping_on_mom.jpg', description: 'My favorite place to nap.', likes: 0 },
-    { path: 'images/sweater.jpg', description: 'What do you think of my new sweater?', likes: 0 },
-    { path: 'images/wrapped_in_blanket.jpg', description: `It's a blankets and movies sort of evening`, likes: 0 },
-
-];
+const galleryItems = [];
 
 //POST Route
 router.post('/', (req, res) =>{
-    console.log('/galleries POST', req.body);
+    console.log('/gallery POST', req.body);
     let galleryItemFromClient = req.body;
     const galleryItemToAdd = new Gallery(galleryItemFromClient);
-    galleryItemToAdd.save().then(()=>{
+    galleryItemToAdd.save().then((response)=>{
         res.sendStatus(200);
+        console.log('gallery item added');
+    }).catch((error)=>{
+        res.sendStatus(500);
+        console.log('error with POST', error);
     })
 })
 
@@ -60,9 +52,10 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    Gallery.find({}).then(() => {
-        res.send(galleryItems);
-        console.log(galleryItems);
+    console.log('in /gallery GET')
+    Gallery.find({}).then((response) => {
+        res.send(response);
+        console.log(response);
     }).catch((error) => {
         res.sendStatus(500);
     })
