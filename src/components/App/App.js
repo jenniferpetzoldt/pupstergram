@@ -78,11 +78,13 @@ class App extends Component {
       <div className="App">
         <Header />
         <br />
-        <h1>Gallery</h1>
-        <div>
+        <h1>#Lena_loves_naps</h1>
+        <div id="form">
           <GalleryForm addGalleryItem={this.addGalleryItem} />
         </div>
+        <div id="galleryList">
         <GalleryList deleteGalleryItem={this.deleteGalleryItem} updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
+        </div>
       </div>
     );
   }

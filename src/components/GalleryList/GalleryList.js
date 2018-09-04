@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem.js';
+import GridList from '@material-ui/core/GridList';
+
 
 class GalleryList extends Component {
     constructor(props) {
@@ -9,13 +11,13 @@ class GalleryList extends Component {
 
     render() {
         return (
-            <div>
+            <GridList>
                 {this.props.galleryList.map((galleryItem, id) => {
                     return (
                         <GalleryItem deleteGalleryItem={this.props.deleteGalleryItem} updateLikes={this.props.updateLikes} key={id} galleryItem={galleryItem} />
                     );
                 })}
-            </div>
+            </GridList>
         );
     }
 }

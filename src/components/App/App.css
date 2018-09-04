@@ -7,10 +7,12 @@
 }
 
 .App-header {
-  background-color: #5F6F75;
-  height: 70px;
   padding: 20px;
-  color: white;
+  color: rgb(3, 14, 20);
+  font-size: 250%;
+  text-align: left;
+  font-family: 'Waiting for the Sunrise', cursive;
+  margin-left: 5%;
 }
 
 .App-title {
@@ -27,16 +29,15 @@
 }
 
 html, body {
-  margin: 0;
   padding: 0;
-  background-color: #EEC9C8;
-  color: #5F6F75;
+  background-color: #f5f9fa;
+  color: rgb(20, 38, 87);
+  font-family:  Roboto,'Open Sans', 'Helvetica Neue', sans-serif
 }
 
-card {
-  float: left;
-  margin : 3%;
-  height: 240px;
+h1 {
+  font-size: 300%;
+  margin: 0;
 }
 
 img, .image_description {
@@ -45,5 +46,22 @@ img, .image_description {
 }
 
 .image_description { 
+font-family: 'Waiting for the Sunrise', cursive;
+font-size: 150%;
 margin: 0;
+}
+
+#form {
+  margin: 4%;
+}
+
+#galleryList {
+  margin: 5%;
+}
+
+#pupstergram {
+  height: 80px;
+  width: 80px;
+  align-self: left;
+  margin: 0;
 }

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import GridListTile from '@material-ui/core/GridListTile';
+import Button from '@material-ui/core/Button';
 
 class GalleryItem extends Component {
     constructor(props) {
         super(props);
         this.state = { isHidden: false };
-
     }
 
     handleDeleteClick = () => {
         console.log('in handleDeleteClick');
         this.props.deleteGalleryItem(this.props.galleryItem._id);
-
     }
 
     handleClick = () => {
@@ -23,28 +23,34 @@ class GalleryItem extends Component {
         this.setState({
             isHidden: !this.isHidden,
         })
-
     }
 
     render() {
         const { isHidden } = this.state;
         let message;
-        if (this.props.galleryItem.likes > 0) {
-            message = <p>{this.props.galleryItem.likes} people have loved this photo</p>
-        } else {
-            message = <p>unloved</p>
+        if (this.props.galleryItem.likes === 1) {
+            message = <p>{this.props.galleryItem.likes} like</p>
+        } else if (this.props.galleryItem.likes > 1) {
+            message = <p>{this.props.galleryItem.likes} likes</p>
+        }
+        else {
+            message = <p>Waiting to be loved!</p>
         }
 
-
         return (
-            <card>
+            <GridListTile>
                 <div onClick={() => this.setState({ isHidden: !isHidden })}>
-                    {isHidden ? <p className="image_description">{this.props.galleryItem.description}</p> : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
+                    {isHidden ? 
+                    <div className="image_description">
+                        {/* <p>Date {this.props.galleryItem.date}</p> */}
+                        <p>{this.props.galleryItem.description}</p>
+                    </div>
+                        : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
                 </div>
-                <button onClick={this.handleClick}>Like</button>
-                <button onClick={this.handleDeleteClick}>Delete</button>
+                <Button onClick={this.handleClick}>Like</Button>
+                <Button onClick={this.handleDeleteClick}>Delete</Button>
                 {message}
-            </card>
+            </GridListTile>
         );
     }
 }

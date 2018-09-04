@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-//const galleryItems = require('../modules/gallery.data');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
 const GallerySchema = new Schema({
-    // id: {type: Number},
     path: { type: String },
     description: { type: String },
+    // date: {type: Number},
     likes: { type: Number }
 });
 

@@ -4,7 +4,7 @@ class Header extends Component {
     render() {
         return (
             <header className="App-header">
-                <h1 className="App-title">Gallery of my life</h1>
+                <h1 className="App-title"><img id="pupstergram" src="images/pupstergram.png" />Pupstergram</h1>
             </header>
         );
     }
