@@ -63,7 +63,8 @@ class GalleryForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleFormSubmit}>
-                <TextField id="path" label="Image" onChange={this.handlePathChange} />
+                {/* form is present, needs better spacing */}
+                <TextField id="path" label="Image" onChange={this.handlePathChange} margin="normal" />
                 <TextField id="description" label="Description" onChange={this.handleDescriptionChange} margin="normal" />
                 {/* <TextField id="date" label="Date" type="date" defaultValue="2018-09-01" InputLabelProps={{shrink: true, }} /> */}
                 {/* attempted to add in date picker but struggled with storing the value */}
