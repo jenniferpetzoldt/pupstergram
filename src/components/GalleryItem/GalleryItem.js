@@ -9,7 +9,7 @@ class GalleryItem extends Component {
 
     handleClick = () => {
         console.log('in handleClick');
-        this.props.updateLikes(this.props.galleryItem.id);
+        this.props.updateLikes(this.props.galleryItem._id);
     }
 
     toggleHidden = () => {

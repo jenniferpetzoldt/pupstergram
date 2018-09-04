@@ -39,7 +39,7 @@ router.put('/like/:id', (req, res) => {
             galleryItem.likes += 1;
             galleryItem.save().then((response) => {
                 res.sendStatus(200);
-                console.log('gallery item adjusted', galleryItem);
+                console.log('gallery item adjusted', response);
             }).catch((error) => {
                 res.sendStatus(500);
                 console.log('error with findOne', error);
@@ -60,5 +60,18 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
     })
 }); // END GET Route
+
+//DELETE Route
+router.delete('/', (req, res) => {
+    Gallery.findByIdAndRemove(req.param.id)
+    .then((response) => {
+        res.sendStatus(200);
+        console.log('/list Delete hit');
+    }).catch((error) => {
+        res.sendStatus(500);
+        console.log(error);
+    });
+})//END DELETE Route
+
 
 module.exports = router;
