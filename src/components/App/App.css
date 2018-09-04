@@ -45,6 +45,10 @@ img, .image_description {
   height: 200px;
 }
 
+p {
+  margin: 0;
+}
+
 .image_description { 
 font-family: 'Waiting for the Sunrise', cursive;
 font-size: 150%;

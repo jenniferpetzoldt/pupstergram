@@ -41,17 +41,19 @@ class GalleryItem extends Component {
         return (
             <GridListTile>
                 {/* manages whether the description or image should be shown */}
-                <div onClick={() => this.setState({ isHidden: !isHidden })}>
+                <div className="image_description" onClick={() => this.setState({ isHidden: !isHidden })}>
                     {isHidden ?
-                        <div className="image_description">
+                        <div>
                             {/* <p>Date {this.props.galleryItem.date}</p> */}
                             <p>{this.props.galleryItem.description}</p>
                         </div>
                         : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
                 </div>
+                <div>
                 <Button onClick={this.handleClick}>Like</Button>
                 <Button onClick={this.handleDeleteClick}>Delete</Button>
                 {message}
+                </div>
             </GridListTile>
         );
     }
