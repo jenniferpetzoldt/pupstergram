@@ -7,6 +7,12 @@ class GalleryItem extends Component {
 
     }
 
+    handleDeleteClick = () => {
+        console.log('in handleDeleteClick');
+        this.props.deleteGalleryItem(this.props.galleryItem._id);
+
+    }
+
     handleClick = () => {
         console.log('in handleClick');
         this.props.updateLikes(this.props.galleryItem._id);
@@ -36,6 +42,7 @@ class GalleryItem extends Component {
                     {isHidden ? <p className="image_description">{this.props.galleryItem.description}</p> : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
                 </div>
                 <button onClick={this.handleClick}>Like</button>
+                <button onClick={this.handleDeleteClick}>Delete</button>
                 {message}
             </card>
         );

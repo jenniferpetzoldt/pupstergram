@@ -9,13 +9,13 @@ class GalleryList extends Component {
 
     render() {
         return (
-                <div>
-                    {this.props.galleryList.map((galleryItem, id) => {
-                        return (
-                            <GalleryItem updateLikes={this.props.updateLikes} key={id} galleryItem={galleryItem} />
-                        );
-                    })}
-                </div>
+            <div>
+                {this.props.galleryList.map((galleryItem, id) => {
+                    return (
+                        <GalleryItem deleteGalleryItem={this.props.deleteGalleryItem} updateLikes={this.props.updateLikes} key={id} galleryItem={galleryItem} />
+                    );
+                })}
+            </div>
         );
     }
 }

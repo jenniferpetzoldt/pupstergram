@@ -17,6 +17,33 @@ class App extends Component {
     this.getGalleryItems();
   }
 
+  addGalleryItem = (galleryItem) => {
+    axios({
+      method: 'POST',
+      url: 'gallery',
+      data: galleryItem
+    }).then((response) => {
+      console.log('back from server with', response);
+      this.getGalleryItems();
+    }).catch((error) => {
+      console.log(error);
+      alert('unable to add gallery item');
+    })
+  }
+
+  deleteGalleryItem = (galleryItemId) => {
+    console.log('in deleteGalleryItem', galleryItemId)
+    axios({
+      method: 'DELETE',
+      url: '/gallery/' + galleryItemId
+    }).then((response) => {
+      console.log('in deleteGalleryItem', response);
+      this.getGalleryItems();
+    }).catch((error)=>{
+      alert('unable to delete');
+      console.log('delete error', error);
+    })
+  }
   getGalleryItems() {
     axios({
       method: 'GET',
@@ -46,20 +73,6 @@ class App extends Component {
     });
   }
 
-  addGalleryItem = (galleryItem) => {
-    axios({
-      method: 'POST',
-      url: 'gallery',
-      data: galleryItem
-    }).then((response)=>{
-      console.log('back from server with', response);
-      this.getGalleryItems();
-    }).catch((error)=>{
-      console.log(error);
-      alert('unable to add gallery item');
-    })
-  }
-
   render() {
     return (
       <div className="App">
@@ -67,9 +80,9 @@ class App extends Component {
         <br />
         <h1>Gallery</h1>
         <div>
-          <GalleryForm addGalleryItem={this.addGalleryItem}/>
+          <GalleryForm addGalleryItem={this.addGalleryItem} />
         </div>
-        <GalleryList updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
+        <GalleryList deleteGalleryItem={this.deleteGalleryItem} updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
       </div>
     );
   }

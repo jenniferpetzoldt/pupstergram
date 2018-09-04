@@ -17,14 +17,14 @@ const Gallery = mongoose.model('galleries', GallerySchema);
 const galleryItems = [];
 
 //POST Route
-router.post('/', (req, res) =>{
+router.post('/', (req, res) => {
     console.log('/gallery POST', req.body);
     let galleryItemFromClient = req.body;
     const galleryItemToAdd = new Gallery(galleryItemFromClient);
-    galleryItemToAdd.save().then((response)=>{
+    galleryItemToAdd.save().then((response) => {
         res.sendStatus(200);
         console.log('gallery item added');
-    }).catch((error)=>{
+    }).catch((error) => {
         res.sendStatus(500);
         console.log('error with POST', error);
     })
@@ -62,15 +62,15 @@ router.get('/', (req, res) => {
 }); // END GET Route
 
 //DELETE Route
-router.delete('/', (req, res) => {
-    Gallery.findByIdAndRemove(req.param.id)
-    .then((response) => {
-        res.sendStatus(200);
-        console.log('/list Delete hit');
-    }).catch((error) => {
-        res.sendStatus(500);
-        console.log(error);
-    });
+router.delete('/:id', (req, res) => {
+    Gallery.findByIdAndRemove(req.params.id)
+        .then((response) => {
+            res.sendStatus(200);
+            console.log('/list Delete hit');
+        }).catch((error) => {
+            res.sendStatus(500);
+            console.log(error);
+        });
 })//END DELETE Route
 
 
