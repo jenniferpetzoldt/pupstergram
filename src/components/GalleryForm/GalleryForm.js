@@ -16,6 +16,7 @@ class GalleryForm extends Component {
         };
     }
 
+    //updates path in state
     handlePathChange = (event) => {
         this.setState({
             galleryItem: {
@@ -27,18 +28,20 @@ class GalleryForm extends Component {
         });
     }
 
-    handleDateChange = (event) => {
-        this.setState({
-            galleryItem: {
-                path: this.state.galleryItem.path,
-                description: this.state.galleryItem.description,
-                // date: event.target.value,
-                likes: this.state.galleryItem.likes,
-            }
-        })
-        console.log(this.state.galleryItem.date);
-    }
+    // would be the function used to update date in state
+    // handleDateChange = (event) => {
+    //     this.setState({
+    //         galleryItem: {
+    //             path: this.state.galleryItem.path,
+    //             description: this.state.galleryItem.description,
+    //             date: event.target.value,
+    //             likes: this.state.galleryItem.likes,
+    //         }
+    //     })
+    //     console.log(this.state.galleryItem.date);
+    // }
 
+    //updates description in state
     handleDescriptionChange = (event) => {
         this.setState({
             galleryItem: {
@@ -50,22 +53,22 @@ class GalleryForm extends Component {
         })
     }
 
+    //submits the form data, passes it through the client side POST route, and clears the form
     handleFormSubmit = (event) => {
         event.preventDefault();
         this.props.addGalleryItem(this.state.galleryItem);
-        console.log('in handleFormSubmit', this.state.galleryItem);
         event.target.reset();
     }
 
     render() {
         return (
-           <form onSubmit={this.handleFormSubmit}>
-               <TextField id="path" label="Image" onChange={this.handlePathChange} />
-               <TextField id="description" label="Description" onChange={this.handleDescriptionChange} margin="normal"/>
-               {/* <TextField id="date" label="Date" type="date" defaultValue="2018-09-01" InputLabelProps={{shrink: true, }} /> */}
-               {/* attempted to add in date picker but struggled with storing the value */}
-               <Button type="submit">Submit</Button>
-           </form>
+            <form onSubmit={this.handleFormSubmit}>
+                <TextField id="path" label="Image" onChange={this.handlePathChange} />
+                <TextField id="description" label="Description" onChange={this.handleDescriptionChange} margin="normal" />
+                {/* <TextField id="date" label="Date" type="date" defaultValue="2018-09-01" InputLabelProps={{shrink: true, }} /> */}
+                {/* attempted to add in date picker but struggled with storing the value */}
+                <Button type="submit">Submit</Button>
+            </form>
         );
     }
 }// end class

@@ -32,14 +32,13 @@ class App extends Component {
   }
 
   deleteGalleryItem = (galleryItemId) => {
-    console.log('in deleteGalleryItem', galleryItemId)
     axios({
       method: 'DELETE',
       url: '/gallery/' + galleryItemId
     }).then((response) => {
       console.log('in deleteGalleryItem', response);
       this.getGalleryItems();
-    }).catch((error)=>{
+    }).catch((error) => {
       alert('unable to delete');
       console.log('delete error', error);
     })
@@ -60,7 +59,6 @@ class App extends Component {
   }
 
   updateLikes = (galleryItem) => {
-    console.log('in updateLikes', galleryItem);
     axios({
       method: 'PUT',
       url: '/gallery/like/' + galleryItem,
@@ -76,14 +74,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* imports the header JSX */}
         <Header />
-        <br />
         <h1>#Lena_loves_naps</h1>
         <div id="form">
+          {/* imports the form JSX and passes the function through props */}
           <GalleryForm addGalleryItem={this.addGalleryItem} />
         </div>
         <div id="galleryList">
-        <GalleryList deleteGalleryItem={this.deleteGalleryItem} updateLikes={this.updateLikes} galleryList={this.state.galleryList} />
+          {/* imports the tiles and passes 3 functions through props */}
+          <GalleryList deleteGalleryItem={this.deleteGalleryItem}
+            updateLikes={this.updateLikes}
+            galleryList={this.state.galleryList} />
         </div>
       </div>
     );

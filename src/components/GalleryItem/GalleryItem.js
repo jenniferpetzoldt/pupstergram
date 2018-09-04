@@ -8,18 +8,18 @@ class GalleryItem extends Component {
         this.state = { isHidden: false };
     }
 
+    //connects delete click to the DELETE route
     handleDeleteClick = () => {
-        console.log('in handleDeleteClick');
         this.props.deleteGalleryItem(this.props.galleryItem._id);
     }
 
+    //connects the like click to the PUT route
     handleClick = () => {
-        console.log('in handleClick');
         this.props.updateLikes(this.props.galleryItem._id);
     }
 
+    //updates the images' hidden status
     toggleHidden = () => {
-        console.log('in toggleHidden');
         this.setState({
             isHidden: !this.isHidden,
         })
@@ -28,6 +28,7 @@ class GalleryItem extends Component {
     render() {
         const { isHidden } = this.state;
         let message;
+        //indicates what message should be shown based on number of likes 
         if (this.props.galleryItem.likes === 1) {
             message = <p>{this.props.galleryItem.likes} like</p>
         } else if (this.props.galleryItem.likes > 1) {
@@ -39,12 +40,13 @@ class GalleryItem extends Component {
 
         return (
             <GridListTile>
+                {/* manages whether the description or image should be shown */}
                 <div onClick={() => this.setState({ isHidden: !isHidden })}>
-                    {isHidden ? 
-                    <div className="image_description">
-                        {/* <p>Date {this.props.galleryItem.date}</p> */}
-                        <p>{this.props.galleryItem.description}</p>
-                    </div>
+                    {isHidden ?
+                        <div className="image_description">
+                            {/* <p>Date {this.props.galleryItem.date}</p> */}
+                            <p>{this.props.galleryItem.description}</p>
+                        </div>
                         : <img src={this.props.galleryItem.path} alt={this.props.galleryItem.description} />}
                 </div>
                 <Button onClick={this.handleClick}>Like</Button>

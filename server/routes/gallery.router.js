@@ -13,11 +13,9 @@ const GallerySchema = new Schema({
 
 const Gallery = mongoose.model('galleries', GallerySchema);
 
-const galleryItems = [];
 
-//POST Route
+//POST Route to add new images to the gallery
 router.post('/', (req, res) => {
-    console.log('/gallery POST', req.body);
     let galleryItemFromClient = req.body;
     const galleryItemToAdd = new Gallery(galleryItemFromClient);
     galleryItemToAdd.save().then((response) => {
@@ -26,16 +24,14 @@ router.post('/', (req, res) => {
     }).catch((error) => {
         res.sendStatus(500);
         console.log('error with POST', error);
-    })
-})
+    });
+})//end POST Route
 
-// PUT Route
+// PUT Route to update the number of likes associated with the image
 router.put('/like/:id', (req, res) => {
-    console.log('Update', req.params.id);
     Gallery.findOne({ _id: req.params.id })
         .then((galleryItem) => {
-            console.log('gallery Item:', galleryItem);
-            galleryItem.likes += 1;
+            galleryItem.likes += 1; //increases the total likes by one
             galleryItem.save().then((response) => {
                 res.sendStatus(200);
                 console.log('gallery item adjusted', response);
@@ -45,24 +41,25 @@ router.put('/like/:id', (req, res) => {
             });
         }).catch((error) => {
             res.sendStatus(500);
-            console.log('error with PUT', error)
+            console.log('Error with PUT route', error);
         });
 }); // END PUT Route
 
-// GET Route
+// GET Route to pull all images from the database
 router.get('/', (req, res) => {
     console.log('in /gallery GET')
-    Gallery.find({}).then((response) => {
+    Gallery.find({}).then((response) => { //selects all data in database
         res.send(response);
         console.log(response);
     }).catch((error) => {
         res.sendStatus(500);
-    })
+        console.log('Error with GET route', error);
+    });
 }); // END GET Route
 
 //DELETE Route
 router.delete('/:id', (req, res) => {
-    Gallery.findByIdAndRemove(req.params.id)
+    Gallery.findByIdAndRemove(req.params.id) //selects data entry by id
         .then((response) => {
             res.sendStatus(200);
             console.log('/list Delete hit');
