@@ -55,6 +55,10 @@ font-size: 150%;
 margin: 0;
 }
 
+.grid-list-tile {
+  margin: 1%;
+}
+
 #form {
   margin: 4%;
 }

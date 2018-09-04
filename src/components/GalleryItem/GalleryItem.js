@@ -39,6 +39,7 @@ class GalleryItem extends Component {
         }
 
         return (
+            <div className="grid-list-tile">
             <GridListTile>
                 {/* manages whether the description or image should be shown */}
                 <div className="image_description" onClick={() => this.setState({ isHidden: !isHidden })}>
@@ -55,6 +56,7 @@ class GalleryItem extends Component {
                 {message}
                 </div>
             </GridListTile>
+            </div>
         );
     }
 }
